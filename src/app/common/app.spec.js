@@ -30,7 +30,7 @@ describe('App', function () {
     }));
 
     it('should redirect to contacts state', function () {
-      spyOn(AuthService, 'isAuthenticated').and.returnValue(true);
+      spyOn(AuthService, 'authenticated').and.returnValue(true);
 
       goTo('/app');
 

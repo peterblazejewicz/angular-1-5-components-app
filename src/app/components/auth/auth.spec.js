@@ -34,7 +34,7 @@ describe('Auth', function () {
     });
 
     it('should redirect to app state', function() {
-      spyOn(AuthService, 'isAuthenticated').and.returnValue(true);
+      spyOn(AuthService, 'authenticated').and.returnValue(true);
 
       goTo('/auth');
 
@@ -52,7 +52,7 @@ describe('Auth', function () {
     }));
 
     it('should return undefined for initial user', function () {
-      expect(AuthService.getUser()).toBeUndefined();
+      expect(AuthService.user).toBeUndefined();
     });
 
     it('should login and store the authenticated user', function () {
@@ -62,8 +62,8 @@ describe('Auth', function () {
 
       promise.then(function (result) {
         expect(result).toEqual(response);
-        expect(AuthService.isAuthenticated()).toBe(true);
-        expect(AuthService.getUser()).toEqual(response);
+        expect(AuthService.authenticated).toBe(true);
+        expect(AuthService.user).toEqual(response);
       });
 
       $rootScope.$digest();
@@ -76,8 +76,8 @@ describe('Auth', function () {
 
       promise.then(function (result) {
         expect(result).toEqual(response);
-        expect(AuthService.isAuthenticated()).toBe(true);
-        expect(AuthService.getUser()).toEqual(response);
+        expect(AuthService.authenticated.toBe(true));
+        expect(AuthService.user).toEqual(response);
       });
 
       $rootScope.$digest();
@@ -87,8 +87,8 @@ describe('Auth', function () {
       var promise = AuthService.logout();
 
       promise.then(function (result) {
-        expect(AuthService.isAuthenticated()).toBe(false);
-        expect(AuthService.getUser()).toBeUndefined();
+        expect(AuthService.authenticated.toBe(false));
+        expect(AuthService.user.toBeUndefined())
       });
 
       $rootScope.$digest();
@@ -100,7 +100,7 @@ describe('Auth', function () {
         promise = AuthService.login(user);
 
       promise.then(function (result) {
-        expect(AuthService.getUser()).toEqual(response);
+        expect(AuthService.user).toEqual(response);
       });
 
       $rootScope.$digest();
@@ -108,7 +108,7 @@ describe('Auth', function () {
       promise = AuthService.logout();
 
       promise.then(function (result) {
-        expect(AuthService.getUser()).toBeUndefined();
+        expect(AuthService.user).toBeUndefined();
       });
 
       $rootScope.$digest();

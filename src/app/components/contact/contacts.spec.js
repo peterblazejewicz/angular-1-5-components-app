@@ -1,13 +1,17 @@
 describe('Contact', function () {
   beforeEach(module('components.auth', function($provide){
-    $provide.value('AuthService', {
-      getUser: function() {
+    var serv = {};
+    Object.defineProperty(serv, 'user', {
+      get: function() {
         return { uid: 1 }
-      },
-      isAuthenticated: function() {
+      }
+    });
+    Object.defineProperty(serv, 'authenticated', {
+      get: function() {
         return true;
       }
     });
+    $provide.value('AuthService', serv);
 
     var child = function(record) {
       return { child: child }

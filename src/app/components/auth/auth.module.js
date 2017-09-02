@@ -48,7 +48,7 @@ angular
     $transitions.onStart({
       to: 'auth.*'
     }, function () {
-      if (AuthService.isAuthenticated()) {
+      if (AuthService.authenticated) {
         return $state.target('app');
       }
     });

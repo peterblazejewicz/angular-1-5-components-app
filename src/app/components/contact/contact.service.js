@@ -1,6 +1,6 @@
 function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObject) {
   var ref = $firebaseRef.contacts;
-  var uid = AuthService.getUser().uid;
+  var uid = AuthService.user.uid;
   return {
     createNewContact: function (contact) {
       return $firebaseArray(ref.child(uid)).$add(contact);

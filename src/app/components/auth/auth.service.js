@@ -1,4 +1,5 @@
 function AuthService($firebaseAuth) {
+  // private
   var auth = $firebaseAuth();
   var authData = null;
   function storeAuthData(response) {
@@ -31,14 +32,16 @@ function AuthService($firebaseAuth) {
     return auth
       .$waitForSignIn().then(onSignIn);
   };
-  this.isAuthenticated = function () {
-    return !!authData;
-  };
-  this.getUser = function () {
-    if (authData) {
+  Object.defineProperty(this, 'authenticated', {
+    get: function() {
+      return !!authData;
+    }
+  });
+  Object.defineProperty(this, 'user', {
+    get: function() {
       return authData;
     }
-  };
+  });
 }
 
 /**

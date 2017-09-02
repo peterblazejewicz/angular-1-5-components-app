@@ -48,7 +48,7 @@ describe('Contact', function () {
     }));
 
     it('should go to the contact state', function() {
-      spyOn(AuthService, 'isAuthenticated').and.returnValue(true);
+      spyOn(AuthService, 'authenticated').and.returnValue(true);
 
       goTo('/app/contact/1');
 

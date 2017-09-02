@@ -31,7 +31,7 @@ describe('Auth', function () {
     });
 
     it('should redirect to app state', function() {
-      spyOn(AuthService, 'isAuthenticated').and.returnValue(true);
+      spyOn(AuthService, 'authenticated').and.returnValue(true);
       goTo('/auth/register');
       expect($state.current.name).toEqual('app')
     });
